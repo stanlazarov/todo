@@ -1,0 +1,12 @@
+.pointer:hover {
+    cursor: pointer;
+}
+
+.completed {
+    color: #d9d9d9;
+    text-decoration: line-through;
+}
+
+.smalltxt {
+    font-size: 13px;
+}

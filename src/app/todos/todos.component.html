@@ -1,0 +1,40 @@
+<ul class="list-group list-group-flush w-100">
+    <div class="list-group-item rounded p-0 border-light shadow container">
+        <app-todo-form (refreshList)="ngOnInit()"></app-todo-form>
+    </div>
+    <div *ngFor=" let item of this.data " class="container list-group-item list-group-item-action rounded p-4 border-light shadow">
+        <div class="row">
+            <button type="button" class="btn col-1" [ngClass]="{'btn-info': item.completed === true,'btn-outline-info': item.completed === false}" (click)="toggleCompleted(item.id)">
+              &#x2713;
+            </button>
+            <div class="col-10 mt-1">
+                <span class="h4" [ngClass]="{'completed': item.completed === true}">
+                  {{item.text}}
+                </span>
+            </div>
+            <button (click)="removeTodo(item.id)" type="button" class="btn btn-sm btn-outline-danger col-1">
+            X
+            </button>
+        </div>
+    </div>
+    <div class="container list-group-item rounded border-light shadow">
+        <div class="row">
+            <span class="col-2 smalltxt d-flex align-items-center">{{this.activeCount}} items left</span>
+            <div class="btn-group col-7 w-50">
+                <button class="btn smalltxt" (click)="showAll()" [ngClass]="{'btn-secondary': mode.all === true,'btn-outline-secondary': mode.all === false}">
+                  All
+                </button>
+                <button class="btn smalltxt" (click)="showUncompleted()" [ngClass]="{'btn-secondary': mode.uncompleted === true,'btn-outline-secondary': mode.uncompleted === false}">
+                  Active
+                </button>
+                <button class="btn smalltxt" (click)="showCompleted()" [ngClass]="{'btn-secondary': mode.completed === true,'btn-outline-secondary': mode.completed === false}">
+                  Completed
+                </button>
+            </div>
+            <button class="btn btn-outline-secondary smalltxt col-3" (click)="clearCompleted()">
+              Clear completed
+            </button>
+        </div>
+    </div>
+
+</ul>
